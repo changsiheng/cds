@@ -92,11 +92,11 @@ func Pull(ctx context.Context, db gorp.SqlExecutor, cache cache.Store, proj sdk.
 	//Reload env to retrieve secrets
 	for i := range wf.Environments {
 		env := wf.Environments[i]
-		vars, errv := environment.GetAllVariable(db, proj.Key, env.Name, environment.WithClearPassword())
+		vars, errv := environment.LoadAllVariablesWithDecrytion(db, env.ID)
 		if errv != nil {
 			return wp, sdk.WrapError(errv, "cannot load environment variables %s", env.Name)
 		}
-		env.Variable = vars
+		env.Variables = vars
 
 		if err := environment.LoadAllDecryptedKeys(ctx, db, &env); err != nil {
 			return wp, sdk.WrapError(err, "cannot load environment keys %s", env.Name)
