@@ -134,6 +134,3 @@ func TestNewAdvancedError(t *testing.T) {
 	httpErr = ExtractHTTPError(err, "fr")
 	assert.Equal(t, "la ressource n'existe pas (from: can't found this)", httpErr.Error())
 }
-
-func TestNewErrorFrom(t *testing.T) {
-}

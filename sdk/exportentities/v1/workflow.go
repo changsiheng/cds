@@ -180,28 +180,6 @@ nextDep:
 
 // GetWorkflow returns a fresh sdk.Workflow
 func (w Workflow) GetWorkflow() (*sdk.Workflow, error) {
-	// if there is a template instance id on the workflow export, add it
-	// FIXME returns template instance
-	//if w.Template != "" {
-	//  templatePathWithVersion := strings.Split(w.Template, ":")
-	//  if len(templatePathWithVersion) != 2 {
-	//    return nil, sdk.NewErrorFrom(sdk.ErrWrongRequest, "invalid template path, missing version")
-	//  }
-	//  templateVersion, err := strconv.ParseInt(templatePathWithVersion[1], 10, 64)
-	//  if err != nil {
-	//    return nil, sdk.NewErrorWithStack(err, sdk.NewErrorFrom(sdk.ErrWrongRequest, "invalid template version"))
-	//  }
-	//  templatePath := strings.Split(templatePathWithVersion[0], "/")
-	//  if len(templatePath) != 2 {
-	//    return nil, sdk.NewErrorFrom(sdk.ErrWrongRequest, "invalid template path, missing template slug or group name")
-	//  }
-	//  wf.Template = &sdk.WorkflowTemplate{
-	//    Group:   &sdk.Group{Name: templatePath[0]},
-	//    Slug:    templatePath[1],
-	//    Version: templateVersion,
-	//  }
-	//}
-
 	var wf = new(sdk.Workflow)
 	wf.Name = w.Name
 	wf.Description = w.Description
